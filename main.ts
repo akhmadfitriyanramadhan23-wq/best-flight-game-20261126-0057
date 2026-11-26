@@ -3,7 +3,7 @@
 // (MAKEFUN_OUTPUT_DIR, or /output) and writes /output/dossier.json with
 // buildDossier from the kit's vendor/makefun-game.ts. Node 22 stdlib only.
 
-import { cpSync, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildDossier } from './vendor/makefun-game.ts';
@@ -11,7 +11,6 @@ import { buildDossier } from './vendor/makefun-game.ts';
 const root = dirname(fileURLToPath(import.meta.url));
 const outDir = resolve(process.env.MAKEFUN_OUTPUT_DIR || '/output');
 
-rmSync(outDir, { recursive: true, force: true });
 mkdirSync(outDir, { recursive: true });
 
 const gameSrc = join(root, 'game');
